@@ -78,6 +78,6 @@ public class ViewLogin {
         }
 
         JOptionPane.showMessageDialog(view, "Welcome " + user.getUserName(), "Success", JOptionPane.INFORMATION_MESSAGE);
-
+        db.setCurrentUser(user);
     }
 }

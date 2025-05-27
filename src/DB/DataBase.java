@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class DataBase {
     ArrayList<Meal> products = new ArrayList<>();
     ArrayList<User> AllowUsers = new ArrayList<>();
+    User currentUser;
 
     // Constructor
     public DataBase() {
@@ -39,9 +40,17 @@ public class DataBase {
         AllowUsers.add(userAllow);
     }
 
+    public void setCurrentUser(User user) {
+        this.currentUser = user;
+    }
+
     // Getters
     public ArrayList<User> getAllowUsers() {
       return AllowUsers;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
     }
 
     public User getUserById(int id) {
