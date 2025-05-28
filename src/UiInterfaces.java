@@ -1,21 +1,23 @@
 import DB.DataBase;
 import UiComponents.IconCompensar;
 import UiComponents.MenuButton;
+import interfaces.NamePage;
+import utils.RedirectTo;
 import views.ViewAboutUs;
 import views.ViewLogin;
+import views.ViewProducts;
 
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-
 public class UiInterfaces extends JDialog {
   // Variables
-  private DataBase db;
   private JPanel contentPane;
   private JPanel menuBar;
   private JPanel views;
   private CardLayout cardLayout;
+  private RedirectTo redirectTo;
 
   // General methods
   private void onExit() {
@@ -46,7 +48,7 @@ public class UiInterfaces extends JDialog {
   }
 
   // Menu
-  private void menuApp (DataBase db) {
+  private void menuApp () {
     // Crear el panel lateral
     menuBar = new JPanel();
     menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.Y_AXIS));
@@ -63,13 +65,9 @@ public class UiInterfaces extends JDialog {
 
 
     // Acciones de botones
-    btnLogin.addActionListener(e -> {
-      cardLayout.show(views, "Login");
-    });
-    btnAboutUs.addActionListener(e -> {
-      cardLayout.show(views, "AboutUs");
-    });
-    btnExit.addActionListener(e -> onExit());
+    btnLogin.addActionListener(_ -> cardLayout.show(views, NamePage.viewLogin)); // Changed e to _
+    btnAboutUs.addActionListener(_ -> cardLayout.show(views, NamePage.viewAboutUs)); // Changed e to _
+    btnExit.addActionListener(_ -> onExit()); // Changed e to _
 
 
     // Add components to the menu
@@ -85,28 +83,41 @@ public class UiInterfaces extends JDialog {
 
   // Create views
   private void createViews(DataBase db) {
-    // create views
+    // Create the JPanel instances for view content
     JPanel viewLogin = new JPanel();
-    new ViewLogin().renderView(viewLogin, db);
-
     JPanel viewAboutUs = new JPanel();
-    new ViewAboutUs().renderView(viewAboutUs);
+    JPanel viewProducts = new JPanel();
 
-    // Add views
-    views.add(viewLogin, "Login");
-    views.add(viewAboutUs, "AboutUs");
+    // Add these panels to the 'views' CardLayout container
+    // This ensures cards are registered before any attempt to show them.
+    views.add(viewLogin, NamePage.viewLogin);
+    views.add(viewProducts, NamePage.viewProducts);
+    views.add(viewAboutUs, NamePage.viewAboutUs);
+
+    redirectTo = new RedirectTo(cardLayout, views);
+
+    new ViewLogin().renderView(viewLogin, db, (view, user) -> {
+      db.setCurrentUser(user);
+      redirectTo.redirectTo(view);
+    });
+
+    new ViewAboutUs().renderView(viewAboutUs);
+    new ViewProducts().renderView(viewProducts, db);
   }
 
   private void createUIComponents() {
     DataBase db = new DataBase();
     cardLayout = new CardLayout();
-    views = new JPanel(cardLayout);
 
+    if (views != null) {
+        views.setLayout(cardLayout);
+    } else {
+        views = new JPanel(cardLayout);
+    }
 
     views.setPreferredSize(new Dimension(900, 800));
-    views.setBackground(Color.WHITE);
 
-    menuApp(db);
+    menuApp();
     createViews(db);
   }
 

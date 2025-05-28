@@ -11,6 +11,5 @@ public class ViewProducts {
         viewProducts.setLayout(new BoxLayout(viewProducts, BoxLayout.Y_AXIS));
         JLabel title = new JLabel("Products");
         title.setFont(new Font("Arial", Font.BOLD, 20));
-
     }
 }

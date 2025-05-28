@@ -3,13 +3,14 @@ package views;
 import DB.DataBase;
 import Model.User;
 import UiComponents.TextFile;
+import interfaces.Callback;
+import interfaces.NamePage;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Locale;
 
 public class ViewLogin {
-    public void renderView(JPanel view, DataBase db) {
+    public void renderView(JPanel view, DataBase db, Callback callback) {
         // Add title of view
         JLabel title = new JLabel("Login to Compensar");
         title.setFont(new Font("Arial", Font.BOLD, 20));
@@ -37,9 +38,7 @@ public class ViewLogin {
         btnAdd.setPreferredSize(new Dimension(200, 40));
 
         // Add data to DB
-        btnAdd.addActionListener(e -> {
-            handlerLogin(txtName, txtPrices, view, db);
-        });
+        btnAdd.addActionListener(_ -> handlerLogin(txtName, txtPrices, view, db, callback )); // Changed e to _ and converted to expression lambda
 
         formPanel.add(txtName);
         formPanel.add(txtPrices);
@@ -55,7 +54,7 @@ public class ViewLogin {
     }
 
     // Event Inventory
-    private void handlerLogin (JTextField txtName, JTextField txtPassword, JPanel view, DataBase db) {
+    private void handlerLogin (JTextField txtName, JTextField txtPassword, JPanel view, DataBase db, Callback callback) {
         final String userName = txtName.getText().toLowerCase();
         final String password = txtPassword.getText();
 
@@ -78,6 +77,7 @@ public class ViewLogin {
         }
 
         JOptionPane.showMessageDialog(view, "Welcome " + user.getUserName(), "Success", JOptionPane.INFORMATION_MESSAGE);
-        db.setCurrentUser(user);
+
+        callback.execute(NamePage.viewProducts, user);
     }
 }
