@@ -1,8 +1,8 @@
 package Model.Meal;
 
 public class Carbohydrates extends Meal {
-    public Carbohydrates(String name, double calories, int userId) {
-        super(name, calories, "carbohydrates", userId);
+    public Carbohydrates(String name, double calories, int userId, int id) {
+        super(name, calories, "carbohydrates", userId, id);
     }
 
     @Override

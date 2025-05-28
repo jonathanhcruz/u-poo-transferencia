@@ -9,9 +9,9 @@ import Model.User;
 import java.util.ArrayList;
 
 public class DataBase {
-    ArrayList<Meal> products = new ArrayList<>();
-    ArrayList<User> AllowUsers = new ArrayList<>();
-    User currentUser;
+    private ArrayList<Meal> products = new ArrayList<>();
+    private ArrayList<User> AllowUsers = new ArrayList<>();
+    private User currentUser;
 
     // Constructor
     public DataBase() {
@@ -20,18 +20,16 @@ public class DataBase {
         AllowUsers.add(new User("Admin","12345", 1));
 
         // Products
-        products.add(new FruitVegetable("Apple", 52, 1));
-        products.add(new FruitVegetable("Avocado", 224, 1));
-        products.add(new FruitVegetable("grape", 67, 1));
-
-        products.add(new Fat("Oil", 884, 0));
-        products.add(new Fat("Cheese", 402, 0));
-        products.add(new Fat("Chocolate", 546,1));
-        products.add(new Fat("Fish", 546, 1));
-
-        products.add(new Carbohydrates("Potato", 546, 0));
-        products.add(new Carbohydrates("Pasta", 546, 1));
-        products.add(new Carbohydrates("Bread", 546, 0));
+        this.setProduct("Apple", 52, 1, "FruitVegetable");
+        this.setProduct("Avocado", 224, 1, "FruitVegetable");
+        this.setProduct("Grape", 67, 1, "FruitVegetable");
+        this.setProduct("Oil", 884, 0, "Fat");
+        this.setProduct("Cheese", 402, 0, "Fat");
+        this.setProduct("Chocolate", 546, 1, "Fat");
+        this.setProduct("Fish", 546, 1, "Fat");
+        this.setProduct("Potato", 546, 0, "Carbohydrates");
+        this.setProduct("Pasta", 546, 1, "Carbohydrates");
+        this.setProduct("Bread", 546, 0, "Carbohydrates");
     }
 
     // Users
@@ -45,6 +43,16 @@ public class DataBase {
     }
 
     // Getters
+    public User getUserByName(String name) {
+        User user = null;
+        for (User employee : AllowUsers) {
+            if (employee.getUserName().toLowerCase().equals(name)) {
+                user = employee;
+            }
+        }
+        return user;
+    }
+
     public ArrayList<User> getAllowUsers() {
       return AllowUsers;
     }
@@ -75,20 +83,27 @@ public class DataBase {
         employeeById.setUserName(user.getUserName());
     }
 
+    //---------------------------------//
 
     // Products
     // Getters
-    public User getUserByName(String name) {
-        User employeeByName = null;
-        for (User employee : AllowUsers) {
-            if (employee.getUserName().toLowerCase().equals(name)) {
-                employeeByName = employee;
+    public Meal getProductById(int id) {
+        Meal productById = null;
+        for (Meal product : products) {
+            if (product.getId() == id) {
+                productById = product;
             }
         }
-        return employeeByName;
+        return productById;
     }
 
-    public ArrayList<Meal> getProductsByUserId(int userId) {
+    public ArrayList<Meal> getProductsByUserId() {
+        if (currentUser == null) {
+            return new ArrayList<>();
+        }
+
+        int userId = currentUser.getId();
+
         ArrayList<Meal> userProducts = new ArrayList<>();
         for (Meal product : products) {
             if (product.getUserId() == userId) {
@@ -106,6 +121,37 @@ public class DataBase {
             }
         }
         return productsByType;
+    }
+
+    // Setters
+    public int setProduct(String name, double calories, int userId, String type) {
+        Meal product = null;
+        int productId = products.size() + 1;
+        switch (type) {
+            case "FruitVegetable":
+                product = new FruitVegetable(name, calories, userId, productId);
+                break;
+            case "Fat":
+                product = new Fat(name, calories, userId, productId);
+                break;
+            case "Carbohydrates":
+                product = new Carbohydrates(name, calories, userId, productId);
+                break;
+        }
+        if (product == null) {
+            return -1;
+        }
+
+        products.add(product);
+        return productId;
+    }
+
+    // Delete
+    public void deleteProductById(int id) {
+        Meal product = getProductById(id);
+        if (product != null) {
+            products.remove(product);
+        }
     }
 
 }

@@ -5,12 +5,14 @@ public abstract class Meal  {
     private double calories;
     private String type;
     private int userId;
+    private int id;
 
-    public Meal (String name, double calories, String type, int userId) {
+    public Meal (String name, double calories, String type, int userId, int id) {
         this.name =  name;
         this.calories = calories;
         this.type = type;
         this.userId = userId;
+        this.id = id;
     }
 
     // getters
@@ -28,6 +30,10 @@ public abstract class Meal  {
 
     public int getUserId() {
         return userId;
+    }
+
+    public int getId() {
+        return id;
     }
 
     // setters

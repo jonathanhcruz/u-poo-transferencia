@@ -78,6 +78,7 @@ public class ViewLogin {
 
         JOptionPane.showMessageDialog(view, "Welcome " + user.getUserName(), "Success", JOptionPane.INFORMATION_MESSAGE);
 
+
         callback.execute(NamePage.viewProducts, user);
     }
 }

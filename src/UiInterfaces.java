@@ -85,24 +85,26 @@ public class UiInterfaces extends JDialog {
   private void createViews(DataBase db) {
     // Create the JPanel instances for view content
     JPanel viewLogin = new JPanel();
-    JPanel viewAboutUs = new JPanel();
     JPanel viewProducts = new JPanel();
+    JPanel viewAboutUs = new JPanel();
 
-    // Add these panels to the 'views' CardLayout container
-    // This ensures cards are registered before any attempt to show them.
     views.add(viewLogin, NamePage.viewLogin);
     views.add(viewProducts, NamePage.viewProducts);
     views.add(viewAboutUs, NamePage.viewAboutUs);
 
     redirectTo = new RedirectTo(cardLayout, views);
 
-    new ViewLogin().renderView(viewLogin, db, (view, user) -> {
+    // Setup ViewLogin with a callback
+    new ViewLogin().renderView(viewLogin, db, (viewName, user) -> {
       db.setCurrentUser(user);
-      redirectTo.redirectTo(view);
+      if (NamePage.viewProducts.equals(viewName)) {
+        new ViewProducts().renderView(viewProducts, db);
+      }
+
+      redirectTo.redirectTo(viewName);
     });
 
     new ViewAboutUs().renderView(viewAboutUs);
-    new ViewProducts().renderView(viewProducts, db);
   }
 
   private void createUIComponents() {

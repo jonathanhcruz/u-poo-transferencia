@@ -5,7 +5,6 @@ public class User {
   String passWord;
   int id;
 
-
     public User(String nameName, String PassWord, int id ) {
         this.userName = nameName;
         this.passWord = PassWord;
