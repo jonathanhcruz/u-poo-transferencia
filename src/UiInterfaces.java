@@ -59,15 +59,15 @@ public class UiInterfaces extends JDialog {
     JLabel iconoCompensar = new IconCompensar("compensar.png", 200, 200);
 
     // add buttons
-    JButton btnLogin = new MenuButton("Login");
+    JButton btnLogin = new MenuButton("Products");
     JButton btnAboutUs = new MenuButton("AboutUs");
     JButton btnExit = new MenuButton("Salir");
 
 
-    // Acciones de botones
-    btnLogin.addActionListener(_ -> cardLayout.show(views, NamePage.viewLogin)); // Changed e to _
-    btnAboutUs.addActionListener(_ -> cardLayout.show(views, NamePage.viewAboutUs)); // Changed e to _
-    btnExit.addActionListener(_ -> onExit()); // Changed e to _
+    // Actions for buttons
+    btnLogin.addActionListener(_ -> cardLayout.show(views, NamePage.viewLogin));
+    btnAboutUs.addActionListener(_ -> cardLayout.show(views, NamePage.viewAboutUs));
+    btnExit.addActionListener(_ -> onExit());
 
 
     // Add components to the menu

@@ -12,6 +12,7 @@ public class DataBase {
     private ArrayList<Meal> products = new ArrayList<>();
     private ArrayList<User> AllowUsers = new ArrayList<>();
     private User currentUser;
+    private static int nextProductId = 1; // Static counter for unique product IDs
 
     // Constructor
     public DataBase() {
@@ -97,13 +98,7 @@ public class DataBase {
         return productById;
     }
 
-    public ArrayList<Meal> getProductsByUserId() {
-        if (currentUser == null) {
-            return new ArrayList<>();
-        }
-
-        int userId = currentUser.getId();
-
+    public ArrayList<Meal> getProductsByUserId(int userId) {
         ArrayList<Meal> userProducts = new ArrayList<>();
         for (Meal product : products) {
             if (product.getUserId() == userId) {
@@ -126,7 +121,7 @@ public class DataBase {
     // Setters
     public int setProduct(String name, double calories, int userId, String type) {
         Meal product = null;
-        int productId = products.size() + 1;
+        int productId = nextProductId++; // Assign current unique ID and then increment for the next one
         switch (type) {
             case "FruitVegetable":
                 product = new FruitVegetable(name, calories, userId, productId);
