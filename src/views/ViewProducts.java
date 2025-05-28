@@ -33,7 +33,7 @@ class ButtonEditor extends DefaultCellEditor {
     protected JButton button;
     private String label;
     private final JTable table;
-    private final ViewProducts viewProductsInstance; // Reference to ViewProducts
+    private final ViewProducts viewProductsInstance;
 
     public ButtonEditor(JCheckBox checkBox, JTable table, ViewProducts viewProductsInstance) {
         super(checkBox);

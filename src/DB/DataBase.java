@@ -5,6 +5,7 @@ import Model.Meal.Fat;
 import Model.Meal.FruitVegetable;
 import Model.Meal.Meal;
 import Model.User;
+import interfaces.TypeProduct;
 
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ public class DataBase {
     private ArrayList<Meal> products = new ArrayList<>();
     private ArrayList<User> AllowUsers = new ArrayList<>();
     private User currentUser;
-    private static int nextProductId = 1; // Static counter for unique product IDs
+    private static int nextProductId = 1;
 
     // Constructor
     public DataBase() {
@@ -21,24 +22,19 @@ public class DataBase {
         AllowUsers.add(new User("Admin","12345", 1));
 
         // Products
-        this.setProduct("Apple", 52, 1, "FruitVegetable");
-        this.setProduct("Avocado", 224, 1, "FruitVegetable");
-        this.setProduct("Grape", 67, 1, "FruitVegetable");
-        this.setProduct("Oil", 884, 0, "Fat");
-        this.setProduct("Cheese", 402, 0, "Fat");
-        this.setProduct("Chocolate", 546, 1, "Fat");
-        this.setProduct("Fish", 546, 1, "Fat");
-        this.setProduct("Potato", 546, 0, "Carbohydrates");
-        this.setProduct("Pasta", 546, 1, "Carbohydrates");
-        this.setProduct("Bread", 546, 0, "Carbohydrates");
+        this.setProduct("Apple", 52, 1, TypeProduct.FruitVegetable);
+        this.setProduct("Avocado", 224, 1, TypeProduct.FruitVegetable);
+        this.setProduct("Grape", 67, 1, TypeProduct.FruitVegetable);
+        this.setProduct("Oil", 884, 0, TypeProduct.Fat);
+        this.setProduct("Cheese", 402, 0, TypeProduct.Fat);
+        this.setProduct("Chocolate", 546, 1, TypeProduct.Fat);
+        this.setProduct("Fish", 546, 1, TypeProduct.Fat);
+        this.setProduct("Potato", 546, 0, TypeProduct.Carbohydrates);
+        this.setProduct("Pasta", 546, 1, TypeProduct.Carbohydrates);
+        this.setProduct("Bread", 546, 0, TypeProduct.Carbohydrates);
     }
 
     // Users
-    // Setters
-    public void setUser(User userAllow) {
-        AllowUsers.add(userAllow);
-    }
-
     public void setCurrentUser(User user) {
         this.currentUser = user;
     }
@@ -52,10 +48,6 @@ public class DataBase {
             }
         }
         return user;
-    }
-
-    public ArrayList<User> getAllowUsers() {
-      return AllowUsers;
     }
 
     public User getCurrentUser() {
@@ -72,17 +64,6 @@ public class DataBase {
         return employeesById;
     }
 
-    // Delete
-    public void deleteUserById(int id) {
-        User employee = getUserById(id);
-        AllowUsers.remove(employee);
-    }
-
-    // Update
-    public void updateUser(User user) {
-        User employeeById = getUserById(user.getId());
-        employeeById.setUserName(user.getUserName());
-    }
 
     //---------------------------------//
 
@@ -106,16 +87,6 @@ public class DataBase {
             }
         }
         return userProducts;
-    }
-
-    public ArrayList<Meal> getProductsByType(String type) {
-        ArrayList<Meal> productsByType = new ArrayList<>();
-        for (Meal product : products) {
-            if (product.getType().equalsIgnoreCase(type)) {
-                productsByType.add(product);
-            }
-        }
-        return productsByType;
     }
 
     // Setters

@@ -20,7 +20,7 @@ public class RedirectTo {
                 break;
             case NamePage.viewAboutUs:
                 break;
-            case NamePage.viewProducts: // Added case for Products
+            case NamePage.viewProducts:
                 break;
             default:
                 throw new IllegalArgumentException("Unknown view: " + viewName);
