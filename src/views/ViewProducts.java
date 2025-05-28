@@ -200,7 +200,7 @@ public class ViewProducts {
 
         JPanel bottomPanel = new JPanel(new BorderLayout());
         bottomPanel.add(formPanel, BorderLayout.CENTER);
-        JPanel buttonContainer = new JPanel(new FlowLayout(FlowLayout.CENTER))
+        JPanel buttonContainer = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonContainer.add(btnAdd);
         bottomPanel.add(buttonContainer, BorderLayout.SOUTH);
 
