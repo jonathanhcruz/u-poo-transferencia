@@ -12,6 +12,14 @@ this project is a simple university project created only for educational purpose
 
 ![Screenshot 2024-11-10 at 4 20 06 PM](https://github.com/user-attachments/assets/fdd8b993-f482-4bce-9404-daec2eadc0eb)
 
+## Usuarios de pruebas
+
+User: SuperAdmin
+Pass: 12345
+
+User: Admin
+Pass: 12345
+
 ## Video
 
 https://github-production-user-asset-6210df.s3.amazonaws.com/46028122/448640132-0f2b2653-dd94-4e27-b77a-ab483153c421.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250529%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250529T012153Z&X-Amz-Expires=300&X-Amz-Signature=a60507eadc99802c664732bd0ec5c61128eba1384a300349d509cb35dba769ed&X-Amz-SignedHeaders=host
