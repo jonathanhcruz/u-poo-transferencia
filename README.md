@@ -14,14 +14,12 @@ this project is a simple university project created only for educational purpose
 
 ## Video
 
-[![](https://markdown-videos.deta.dev/youtube/S92bWr6C560)](https://www.youtube.com/watch?v=S92bWr6C560)
+https://github-production-user-asset-6210df.s3.amazonaws.com/46028122/448640132-0f2b2653-dd94-4e27-b77a-ab483153c421.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250529%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250529T012153Z&X-Amz-Expires=300&X-Amz-Signature=a60507eadc99802c664732bd0ec5c61128eba1384a300349d509cb35dba769ed&X-Amz-SignedHeaders=host
 
-#### [Link Video](https://www.youtube.com/watch?v=S92bWr6C560) 
+## Image
 
-## Images
+<img width="1193" alt="Screenshot 2025-05-28 at 8 22 40 PM" src="https://github.com/user-attachments/assets/0a4d5ec4-67dd-4d9d-8884-b89f974e2cfa" />
 
-![Screenshot 2025-03-29 at 7 25 22 PM](https://github.com/user-attachments/assets/abf4511e-21f8-492f-9de0-862fbb614a59)
+<img width="1201" alt="Screenshot 2025-05-28 at 8 22 59 PM" src="https://github.com/user-attachments/assets/399a98a6-2f3a-4319-ad24-091284eedf0c" />
 
-![Screenshot 2025-03-29 at 7 25 29 PM](https://github.com/user-attachments/assets/841fafdb-11b9-4970-ad59-b300ffbff486)
-
-![Screenshot 2025-03-29 at 7 25 34 PM](https://github.com/user-attachments/assets/5e3a93df-c0a4-4981-bc02-b600ed228776)
+<img width="1199" alt="Screenshot 2025-05-28 at 8 23 10 PM" src="https://github.com/user-attachments/assets/4489e3bf-224a-4c73-bf8d-911ec430970e" />
