@@ -14,11 +14,15 @@ this project is a simple university project created only for educational purpose
 
 ## Usuarios de pruebas
 
-User: SuperAdmin
-Pass: 12345
+|dato| value|
+|----|------|
+|User| SuperAdmin|
+|Pass| 12345 |
 
-User: Admin
-Pass: 12345
+|dato| value|
+|----|------|
+|User| Admin|
+|Pass| 12345 |
 
 ## Video
 
