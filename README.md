@@ -31,7 +31,7 @@ this project is a simple university project created only for educational purpose
 
 > [!IMPORTANT]
 > ### Code explication
-> Link
+> [Video link](https://www.youtube.com/watch?v=YbydPyvQ58o)
 
 ## Image
 
