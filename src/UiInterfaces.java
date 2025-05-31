@@ -61,7 +61,7 @@ public class UiInterfaces extends JDialog {
     // add buttons
     JButton btnLogin = new MenuButton("Products");
     JButton btnAboutUs = new MenuButton("AboutUs");
-    JButton btnExit = new MenuButton("Salir");
+    JButton btnExit = new MenuButton("Exit");
 
 
     // Actions for buttons
